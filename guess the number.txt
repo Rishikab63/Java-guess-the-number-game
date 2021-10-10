@@ -1,0 +1,66 @@
+package OOP_;
+import java.util.Scanner;
+import java.util.Random;
+
+
+class Game{
+	int r;
+	int c=0;
+	Game(){	
+		
+		Random rnd=new Random();
+		r=rnd.nextInt(100);
+		
+	}
+	
+	int getr() {
+		return r;
+	}
+	
+	void setter() {
+		c++;
+	}
+	
+	int timesplayed() {
+		return c;
+	}
+	
+}
+
+public class Ex3_guess_the_number_game {
+	
+	static int takeuserinput() {
+		Scanner sc=new Scanner(System.in);
+		int n;
+		System.out.println("\nEnter your number(0-100):");
+		n=sc.nextInt();
+		return n;
+	}
+	
+	static void iscorrectnumber(int n, int r) {
+		if(n<r) {
+			System.out.println("\nYour number is small, choose higher than this.. ");
+		}
+		else if(n>r) {
+			System.out.println("\nYour number is big, choose smaller than this.. ");
+		}
+		else if(n==r) {
+			System.out.println("\n           Hurrryyy!!!!correct number choosen!!!!\n          you won!!");
+		}
+	}
+	
+	public static void main(String[] args) {
+		int n,r;
+		Game obj=new Game();
+		r=obj.getr();
+		do {
+		n=takeuserinput();
+		iscorrectnumber(n,r);
+		obj.setter();
+		}while(n!=r);
+		
+		System.out.println("\n             played- "+obj.timesplayed()+" times");
+		
+	}
+	
+}
